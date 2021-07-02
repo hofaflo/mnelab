@@ -106,7 +106,7 @@ class Model:
         """Load data set from file."""
         data = read_raw(fname, *args, preload=True, **kwargs)
         self.history.append(f'data = read_raw("{fname}", preload=True)')
-        fsize = getsize(data.filenames[0]) / 1024**2 # convert to MB
+        fsize = getsize(data.filenames[0]) / 1024**2  # convert to MB
         name, ext = Path(fname).stem, "".join(Path(fname).suffixes)
         self.insert_data(defaultdict(lambda: None, name=name, fname=fname,
                                      ftype=ext.upper()[1:], fsize=fsize, data=data,

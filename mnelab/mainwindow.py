@@ -14,8 +14,8 @@ from mne.io.pick import channel_type
 from qtpy.QtCore import (Qt, Slot, QStringListModel, QModelIndex, QSettings, QEvent, QSize,
                          QPoint, QObject, QMetaObject)
 from qtpy.QtGui import QKeySequence, QDropEvent, QIcon
-from qtpy.QtWidgets import (QApplication, QMainWindow, QFileDialog, QSplitter,
-                            QMessageBox, QListView, QAction, QLabel, QFrame)
+from qtpy.QtWidgets import (QApplication, QMainWindow, QFileDialog, QSplitter, QMessageBox,
+                            QListView, QAction, QLabel, QFrame)
 
 from .dialogs import (AnnotationsDialog, AppendDialog, CalcDialog,
                       ChannelPropertiesDialog, CropDialog, ERDSDialog,
@@ -61,7 +61,6 @@ def write_settings(**kwargs):
 
 class MainWindow(QMainWindow):
     """MNELAB main window."""
-
     def __init__(self, model):
         """Initialize MNELAB main window.
 
@@ -416,7 +415,6 @@ class MainWindow(QMainWindow):
                 dialog = NpyDialog(self)
                 if dialog.exec_():
                     self.model.load(fname, dialog.fs)
-
             else:  # all other file formats
                 try:
                     self.model.load(fname)
