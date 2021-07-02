@@ -17,12 +17,11 @@ from qtpy.QtGui import QKeySequence, QDropEvent, QIcon
 from qtpy.QtWidgets import (QApplication, QMainWindow, QFileDialog, QSplitter, QMessageBox,
                             QListView, QAction, QLabel, QFrame)
 
-from .dialogs import (AnnotationsDialog, AppendDialog, CalcDialog,
-                      ChannelPropertiesDialog, CropDialog, ERDSDialog,
-                      EpochDialog, ErrorMessageBox, EventsDialog, FilterDialog,
-                      FindEventsDialog, HistoryDialog, InterpolateBadsDialog,
-                      MetaInfoDialog, MontageDialog, PickChannelsDialog,
-                      ReferenceDialog, RunICADialog, XDFStreamsDialog, NpyDialog)
+from .dialogs import (AnnotationsDialog, AppendDialog, CalcDialog, ChannelPropertiesDialog,
+                      CropDialog, ERDSDialog, EpochDialog, ErrorMessageBox, EventsDialog,
+                      FilterDialog, FindEventsDialog, HistoryDialog, InterpolateBadsDialog,
+                      MetaInfoDialog, MontageDialog, PickChannelsDialog, ReferenceDialog,
+                      RunICADialog, XDFStreamsDialog, NpyDialog)
 from .widgets.infowidget import InfoWidget
 from .model import LabelsNotFoundError, InvalidAnnotationsError
 from .utils import have, has_locations, image_path, interface_style
@@ -410,7 +409,6 @@ class MainWindow(QMainWindow):
                     row = dialog.view.selectionModel().selectedRows()[0].row()
                     stream_id = dialog.model.data(dialog.model.index(row, 0))
                     self.model.load(fname, stream_id=stream_id)
-
             elif ext == ".npy":
                 dialog = NpyDialog(self)
                 if dialog.exec_():
