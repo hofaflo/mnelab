@@ -17,27 +17,12 @@ from qtpy.QtGui import QKeySequence, QDropEvent, QIcon
 from qtpy.QtWidgets import (QApplication, QMainWindow, QFileDialog, QSplitter,
                             QMessageBox, QListView, QAction, QLabel, QFrame)
 
-from .dialogs import (
-    AnnotationsDialog,
-    AppendDialog,
-    CalcDialog,
-    ChannelPropertiesDialog,
-    CropDialog,
-    ERDSDialog,
-    EpochDialog,
-    ErrorMessageBox,
-    EventsDialog,
-    FilterDialog,
-    FindEventsDialog,
-    HistoryDialog,
-    InterpolateBadsDialog,
-    MetaInfoDialog,
-    MontageDialog,
-    PickChannelsDialog,
-    ReferenceDialog,
-    RunICADialog,
-    XDFStreamsDialog,
-    NpyDialog)
+from .dialogs import (AnnotationsDialog, AppendDialog, CalcDialog,
+                      ChannelPropertiesDialog, CropDialog, ERDSDialog,
+                      EpochDialog, ErrorMessageBox, EventsDialog, FilterDialog,
+                      FindEventsDialog, HistoryDialog, InterpolateBadsDialog,
+                      MetaInfoDialog, MontageDialog, PickChannelsDialog,
+                      ReferenceDialog, RunICADialog, XDFStreamsDialog, NpyDialog)
 from .widgets.infowidget import InfoWidget
 from .model import LabelsNotFoundError, InvalidAnnotationsError
 from .utils import have, has_locations, image_path, interface_style
@@ -427,22 +412,10 @@ class MainWindow(QMainWindow):
                     stream_id = dialog.model.data(dialog.model.index(row, 0))
                     self.model.load(fname, stream_id=stream_id)
 
-            elif ext in [".npy", ".mat"]:
+            elif ext == ".npy":
                 dialog = NpyDialog(self)
                 if dialog.exec_():
-                    try:
-                        kwargs = dialog.get_values()
-                        self.model.load(fname, **kwargs)
-                    except TypeError as e:
-                        e = str(e).replace(
-                            "float()", "field").replace(
-                            "string or a ", "")
-                        QMessageBox.critical(
-                            self, "Missing Parameters", str(e))
-                    except ValueError as e:
-                        msg = f"Invalid Matrix Dimensions at {fname}"
-                        QMessageBox.critical(
-                            self, msg, str(e))
+                    self.model.load(fname, dialog.fs)
 
             else:  # all other file formats
                 try:
