@@ -24,9 +24,8 @@ from .xdfstreamsdialog import XDFStreamsDialog
 from .npydialog import NpyDialog
 
 
-__all__ = [AnnotationsDialog, AppendDialog, CalcDialog,
-           ChannelPropertiesDialog, CropDialog, EpochDialog, ERDSDialog,
-           ErrorMessageBox, EventsDialog, FilterDialog, FindEventsDialog,
-           HistoryDialog, InterpolateBadsDialog, MetaInfoDialog, MontageDialog,
-           PickChannelsDialog, ReferenceDialog, RunICADialog, XDFStreamsDialog,
-           NpyDialog]
+__all__ = [AnnotationsDialog, AppendDialog, CalcDialog, ChannelPropertiesDialog, CropDialog,
+           EpochDialog, ERDSDialog, ErrorMessageBox, EventsDialog, FilterDialog,
+           FindEventsDialog, HistoryDialog, InterpolateBadsDialog, MetaInfoDialog,
+           MontageDialog, PickChannelsDialog, ReferenceDialog, RunICADialog, NpyDialog,
+           XDFStreamsDialog]
