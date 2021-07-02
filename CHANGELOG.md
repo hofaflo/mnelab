@@ -9,6 +9,9 @@
 - Rename `master` branch to `main` ([#193](https://github.com/cbrnr/mnelab/pull/193) by [Clemens Brunner](https://github.com/cbrnr))
 - Simplify dependencies ([#199](https://github.com/cbrnr/mnelab/pull/199) by [Clemens Brunner](https://github.com/cbrnr))
 
+### Added
+- Add support for importing .npy files ([#213](https://github.com/cbrnr/mnelab/pull/213) by [jgcaffari1](https://github.com/jgcaffari1) and [Clemens Brunner](https://github.com/cbrnr))
+
 ## [0.6.3] - 2021-01-05
 ### Fixed
 - Fix export functionality ([#184](https://github.com/cbrnr/mnelab/pull/184) by [Guillaume Dollé](https://github.com/gdolle))
