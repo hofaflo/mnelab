@@ -54,6 +54,7 @@ class Model:
         self.index += 1
         self.data.insert(self.index, dataset)
         self.history.append(f"datasets.insert({self.index}, data)")
+        self.view.insert_sidebar_item(self.index, dataset["name"])
 
     @data_changed
     def update_data(self, dataset):
@@ -64,6 +65,7 @@ class Model:
     def remove_data(self):
         """Remove data set at current index."""
         self.data.pop(self.index)
+        self.view.remove_sidebar_item(self.index)
         if self.index >= len(self.data):  # if last entry was removed
             self.index = len(self.data) - 1  # reset index to last entry
 

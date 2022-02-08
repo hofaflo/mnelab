@@ -327,15 +327,16 @@ class MainWindow(QMainWindow):
         """
         self.model.move_data(start, row)
 
-    def data_changed(self):
-        # update sidebar
-        self.sidebar.clear()
-        self.sidebar.insertItems(0, self.model.names)
-        self.sidebar.setCurrentRow(self.model.index)
-        for it in range(self.sidebar.count()):
-            item = self.sidebar.item(it)
-            item.setFlags(item.flags() | Qt.ItemIsEditable)
+    def insert_sidebar_item(self, index, label):
+        self.sidebar.insertItem(index, label)
+        self.sidebar.setCurrentRow(index)
+        item = self.sidebar.item(index)
+        item.setFlags(item.flags() | Qt.ItemIsEditable)
 
+    def remove_sidebar_item(self, index):
+        self.sidebar.takeItem(index)
+
+    def data_changed(self):
         # update info widget
         if self.model.data:
             self.infowidget.set_values(self.model.get_info())
